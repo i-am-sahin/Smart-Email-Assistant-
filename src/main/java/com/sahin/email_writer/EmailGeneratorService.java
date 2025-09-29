@@ -8,6 +8,20 @@ public class EmailGeneratorService {
         //Build Prompt
         String prompt = buildPrompt(emailRequest);
         //Prepare RAW JSON Body
+        String requestBody = String.format(
+                """
+                        {
+                            "contents": [
+                              {
+                                "parts": [
+                                  {
+                                    "text": "%s"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                """,prompt);
         //Send Request
         //Extract Response
     }
