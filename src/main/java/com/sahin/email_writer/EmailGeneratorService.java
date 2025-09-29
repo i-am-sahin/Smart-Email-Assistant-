@@ -38,7 +38,19 @@ public class EmailGeneratorService {
                           }
                 """,prompt);
         //Send Request
+        String response = webClient.post().uri(uriBuilder -> uriBuilder
+                        .path("/v1beta/models/gemini-2.5-flash:generateContent")
+                .build())
+                .header("x-goog-api-key",apiKey)
+                .header("Content-Type","application/json")
+                .bodyValue(requestBody)
+                .retrieve()
+                .bodyToMono(String.class)
+                .block();
+
         //Extract Response
+
+        return "";
     }
 
     private String buildPrompt(EmailRequest emailRequest) {
