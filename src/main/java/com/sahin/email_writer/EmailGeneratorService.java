@@ -4,6 +4,18 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EmailGeneratorService {
+
+    private final WebClient webClient;
+    private final String apiKey;
+
+    public EmailGeneratorService(WebClient.Builder webClientBulider,
+                                 @Value("${gemini-api-url}") String baseUrl,
+                                 @Value("${gemini-api-key}") String geminiAiKey) {
+        this.webClient = webClientBulider.baseUrl(baseUrl)
+                .build();
+        this.apiKey = geminiAiKey;
+    }
+
     public String generateEmailReply(EmailRequest emailRequest) {
         //Build Prompt
         String prompt = buildPrompt(emailRequest);
