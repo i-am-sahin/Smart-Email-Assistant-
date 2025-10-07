@@ -70,7 +70,7 @@ public class EmailGeneratorService {
                     .path("parts")
                     .get(0)
                     .path("text")
-                    .toString();
+                    .asText();
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
@@ -79,7 +79,7 @@ public class EmailGeneratorService {
 
     private String buildPrompt(EmailRequest emailRequest) {
         StringBuilder prompt = new StringBuilder();
-        prompt.append("Generate a Professional email reply for the following email : ");
+        prompt.append("Generate a Professional email reply for the following email Don't give subject name again as it's already attached in the mail : ");
         if (emailRequest.getTone() != null && !(emailRequest.getTone().isEmpty())){
             prompt.append("use a ").append(emailRequest.getTone()).append(" tone");
         }
