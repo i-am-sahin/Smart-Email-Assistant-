@@ -16,6 +16,26 @@ A Spring Boot application that generates email content with customizable tone us
 - Jackson (for JSON processing)
 - Lombok
 
+## Gemini API Integration
+
+To connect your application to the Gemini API:
+
+1. **Obtain Gemini API Key:**
+   - Sign up and get your API key from the Gemini developer portal.
+
+2. **Configure API Key:**
+   - Add your API key to `src/main/resources/application.properties`:
+     ```properties
+     gemini.api.key=YOUR_GEMINI_API_KEY
+     gemini.api.url=https://generativelanguage.googleapis.com
+     ```
+
+3. **Usage in Code:**
+   - Inject the API key and URL from properties in your service class.
+   - Use these values to authenticate requests to the Gemini API.
+
+
+
 ## Getting Started
 
 ### Prerequisites
@@ -63,7 +83,3 @@ A Spring Boot application that generates email content with customizable tone us
   - `EmailGeneratorService.java` - Business logic
   - `EmailRequest.java` - Request model
   - `EmailWriterApplication.java` - Main class
-
-
-
-
